@@ -42,9 +42,21 @@ nav {
 }
 
 .logo {
-    font-size: 1.2rem;
-    font-weight: 700;
+    font-size: 1.5rem;
+    font-weight: 800;
     color: #f5f5f7;
+    background: linear-gradient(135deg, #0071e3 0%, #00a8ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 20px rgba(0, 113, 227, 0.3);
+    letter-spacing: -0.02em;
+}
+
+.nav-center {
+    display: flex;
+    align-items: center;
+    gap: 30px;
 }
 
 .nav-links {
@@ -64,6 +76,42 @@ nav {
 
 .nav-links a:hover {
     opacity: 1;
+}
+
+/* Search Box */
+.search-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.search-box {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 20px;
+    padding: 8px 16px 8px 40px;
+    color: #f5f5f7;
+    font-size: 0.875rem;
+    width: 250px;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.search-box:focus {
+    background: rgba(255,255,255,0.15);
+    border-color: #0071e3;
+    box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.2);
+}
+
+.search-box::placeholder {
+    color: rgba(245, 245, 247, 0.6);
+}
+
+.search-icon {
+    position: absolute;
+    left: 12px;
+    color: rgba(245, 245, 247, 0.6);
+    font-size: 0.875rem;
 }
 
 /* Hero Section */
@@ -207,6 +255,82 @@ nav {
 
 #details.active{display:block}
 
+/* قسم التواصل */
+#contact{
+    display:none;
+    padding: 80px 0;
+    background: #000;
+    text-align: center;
+}
+
+#contact.active{display:block}
+
+.contact-content {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 40px;
+    background: #1d1d1f;
+    border-radius: 24px;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.contact-content h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #f5f5f7;
+    margin-bottom: 20px;
+}
+
+.contact-content p {
+    font-size: 1.25rem;
+    color: #a1a1a6;
+    margin-bottom: 30px;
+}
+
+.phone-number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #0071e3;
+    margin-bottom: 30px;
+    letter-spacing: 0.05em;
+    direction: ltr;
+    text-align: center;
+}
+
+.contact-actions {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.contact-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #25d366;
+    color: #fff;
+    padding: 14px 24px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.contact-btn:hover {
+    background: #20b358;
+    transform: translateY(-2px);
+}
+
+.call-btn {
+    background: #0071e3;
+}
+
+.call-btn:hover {
+    background: #0077ed;
+}
+
 /* زر الرجوع */
 .back-btn{
     background: #1d1d1f;
@@ -300,8 +424,24 @@ html{scroll-behavior:smooth}
 
 /* استجابة للشاشات الصغيرة */
 @media (max-width: 768px) {
+    .nav-container {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+    
+    .nav-center {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        margin-top: 15px;
+    }
+    
     .nav-links {
         display: none;
+    }
+    
+    .search-box {
+        width: 200px;
     }
     
     .hero h1 {
@@ -330,6 +470,29 @@ html{scroll-behavior:smooth}
     .whatsapp span {
         display: none;
     }
+    
+    .contact-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .phone-number {
+        font-size: 1.5rem;
+    }
+}
+
+/* تأثيرات البحث */
+.search-highlight {
+    background: rgba(0, 113, 227, 0.3);
+    border-radius: 4px;
+    padding: 2px 4px;
+}
+
+.no-results {
+    text-align: center;
+    color: #a1a1a6;
+    font-size: 1.25rem;
+    padding: 40px;
 }
 </style>
 </head>
@@ -340,11 +503,17 @@ html{scroll-behavior:smooth}
 <nav>
     <div class="nav-container">
         <div class="logo">إسطبل مكة</div>
+        <div class="nav-center">
+            <div class="search-container">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" class="search-box" placeholder="ابحث عن الخيول..." id="searchInput">
+            </div>
+        </div>
         <div class="nav-links">
-            <a href="#home">الرئيسية</a>
-            <a href="#horses">الخيول</a>
+            <a href="#home" onclick="showHome()">الرئيسية</a>
+            <a href="#horses" onclick="showList()">الخيول</a>
             <a href="#about">من نحن</a>
-            <a href="#contact">تواصل معنا</a>
+            <a href="#contact" onclick="showContact()">تواصل معنا</a>
         </div>
     </div>
 </nav>
@@ -353,7 +522,7 @@ html{scroll-behavior:smooth}
 <section class="hero" id="home">
     <h1>الخيول العربية الأصيلة</h1>
     <p>اكتشف مجموعة استثنائية من أجود الخيول العربية الأصيلة</p>
-    <a href="#horses" class="cta-button">استكشف المجموعة</a>
+    <a href="#horses" class="cta-button" onclick="showList()">استكشف المجموعة</a>
 </section>
 
 <!-- WhatsApp Button -->
@@ -369,6 +538,9 @@ html{scroll-behavior:smooth}
             <p>خيول عربية أصيلة من أفضل السلالات</p>
         </div>
         <div class="grid" id="horseGrid"></div>
+        <div id="noResults" class="no-results" style="display: none;">
+            لا توجد نتائج مطابقة لبحثك
+        </div>
     </section>
 
     <!-- تفاصيل الحصان -->
@@ -378,6 +550,26 @@ html{scroll-behavior:smooth}
         <div class="other-horses">
             <h2>خيول أخرى قد تعجبك</h2>
             <div class="grid" id="otherGrid"></div>
+        </div>
+    </section>
+
+    <!-- صفحة التواصل -->
+    <section id="contact">
+        <button class="back-btn" onclick="showHome()">← رجوع إلى الرئيسية</button>
+        <div class="contact-content">
+            <h2>تواصل معنا</h2>
+            <p>نحن هنا لمساعدتك في العثور على الحصان المثالي</p>
+            <div class="phone-number">+201007579619</div>
+            <div class="contact-actions">
+                <a href="https://wa.me/201007579619" class="contact-btn" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                    واتساب
+                </a>
+                <a href="tel:+201007579619" class="contact-btn call-btn">
+                    <i class="fas fa-phone"></i>
+                    اتصال
+                </a>
+            </div>
         </div>
     </section>
 </div>
@@ -434,32 +626,51 @@ const horses = [
     desc:`فرس من السلالة الصقلاوية النادرة، معروفة بذكائها وسرعتها الفائقة. تتمتع بصحة ممتازة وقد حققت إنجازات رائعة في مسابقات القدرة والتحمل.`
   }
 ];
-/* رسم البطاقات في الصفحة الرئيسة */
+
+/* العناصر المطلوبة */
 const grid = document.getElementById('horseGrid');
 const otherGrid = document.getElementById('otherGrid');
 const listSec = document.getElementById('list');
 const detailSec = document.getElementById('details');
+const contactSec = document.getElementById('contact');
+const heroSec = document.getElementById('home');
 const detailContent = document.getElementById('detailsContent');
+const searchInput = document.getElementById('searchInput');
+const noResults = document.getElementById('noResults');
+
+let allHorses = [...horses];
+let filteredHorses = [...horses];
 
 function renderCards(targetGrid, data, excludeId=null){
   targetGrid.innerHTML = '';
-  data
-    .filter(h=>h.id!==excludeId)
-    .forEach(h=>{
-      const card = document.createElement('div');
-      card.className = 'card';
-      card.innerHTML = `
-        <div class="card-image">
-          <img src="${h.img}" alt="${h.name}" loading="lazy">
-        </div>
-        <div class="info">
-          <h3>${h.name}</h3>
-          <p class="price">${h.price}</p>
-          <p class="short">${h.short}</p>
-        </div>`;
-      card.onclick = ()=>showDetails(h.id);
-      targetGrid.appendChild(card);
-    });
+  const horsesToRender = data.filter(h=>h.id!==excludeId);
+  
+  if (horsesToRender.length === 0) {
+    if (targetGrid === grid) {
+      noResults.style.display = 'block';
+    }
+    return;
+  }
+  
+  if (targetGrid === grid) {
+    noResults.style.display = 'none';
+  }
+  
+  horsesToRender.forEach(h=>{
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `
+      <div class="card-image">
+        <img src="${h.img}" alt="${h.name}" loading="lazy">
+      </div>
+      <div class="info">
+        <h3>${h.name}</h3>
+        <p class="price">${h.price}</p>
+        <p class="short">${h.short}</p>
+      </div>`;
+    card.onclick = ()=>showDetails(h.id);
+    targetGrid.appendChild(card);
+  });
 }
 
 function showDetails(id){
@@ -471,21 +682,67 @@ function showDetails(id){
     <p class="price">${h.price}</p>
     <p class="description">${h.desc}</p>`;
   renderCards(otherGrid, horses, id);
-  listSec.style.display='none';
+  hideAllSections();
   detailSec.classList.add('active');
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
 function showList(){
-  detailSec.classList.remove('active');
+  hideAllSections();
   listSec.style.display='block';
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
+function showContact(){
+  hideAllSections();
+  contactSec.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function showHome(){
+  hideAllSections();
+  heroSec.style.display='block';
+  listSec.style.display='block';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function hideAllSections(){
+  heroSec.style.display='none';
+  listSec.style.display='none';
+  detailSec.classList.remove('active');
+  contactSec.classList.remove('active');
+}
+
+// وظيفة البحث
+function searchHorses(query) {
+  if (!query.trim()) {
+    filteredHorses = [...allHorses];
+  } else {
+    filteredHorses = allHorses.filter(horse => 
+      horse.name.includes(query) ||
+      horse.short.includes(query) ||
+      horse.desc.includes(query)
+    );
+  }
+  renderCards(grid, filteredHorses);
+}
+
+// مستمع البحث
+searchInput.addEventListener('input', (e) => {
+  searchHorses(e.target.value);
+});
+
+// مستمع الإنتر للبحث
+searchInput.addEventListener('keypress', (e) => {
+  if (e.key === 'Enter') {
+    searchHorses(e.target.value);
+  }
+});
+
 /* بدء التشغيل */
 renderCards(grid, horses);
 
-// Smooth scrolling for navigation links
+// التنقل السلس
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -498,6 +755,9 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
+
+// عرض الرئيسية افتراضياً
+showHome();
 </script>
 
 </body>
