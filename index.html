@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>إسطبل مكة – منصة لبيع الخيول العربية الأصيلة</title>
+
+<!-- أيقونات (واتساب) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+/* Reset بسيط */
+*{margin:0;padding:0;box-sizing:border-box} 
+
+body{
+    font-family:-apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Tahoma, sans-serif;
+    background:#000;
+    color:#f5f5f7;
+    min-height:100vh;
+    line-height:1.47059;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Navigation Bar */
+nav {
+    background: rgba(0,0,0,0.8);
+    backdrop-filter: saturate(180%) blur(20px);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 12px 0;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #f5f5f7;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.nav-links a {
+    color: #f5f5f7;
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 400;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.nav-links a:hover {
+    opacity: 1;
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 80px 20px 60px;
+    background: linear-gradient(135deg, #1d1d1f 0%, #000 100%);
+}
+
+.hero h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: #f5f5f7;
+    letter-spacing: -0.02em;
+}
+
+.hero p {
+    font-size: 1.375rem;
+    font-weight: 400;
+    color: #a1a1a6;
+    max-width: 600px;
+    margin: 0 auto 40px;
+}
+
+.cta-button {
+    display: inline-block;
+    background: #0071e3;
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 980px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+    background: #0077ed;
+    transform: scale(1.02);
+}
+
+/* حاوية عامة */
+.container{max-width:1200px;margin:auto;padding:0 20px}
+
+/* قسم المنتجات */
+.products-section {
+    padding: 60px 0;
+    background: #000;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-header h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: #f5f5f7;
+}
+
+.section-header p {
+    font-size: 1.25rem;
+    color: #a1a1a6;
+}
+
+/* شبكة البطاقات */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:24px;
+    margin-top:40px
+}
+
+.card{
+    background: #1d1d1f;
+    border-radius: 18px;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    cursor: pointer;
+    border: 1px solid rgba(255,255,255,0.1);
+    position: relative;
+}
+
+.card:hover{
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    border-color: rgba(255,255,255,0.2);
+}
+
+.card-image {
+    position: relative;
+    overflow: hidden;
+    height: 220px;
+}
+
+.card img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.card:hover img {
+    transform: scale(1.1);
+}
+
+.card .info{
+    padding: 24px;
+    text-align: center;
+}
+
+.card h3{
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #f5f5f7;
+}
+
+.card .price{
+    font-weight: 700;
+    color: #0071e3;
+    font-size: 1.25rem;
+    margin-bottom: 12px;
+}
+
+.card .short {
+    color: #a1a1a6;
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+/* قسم التفاصيل */
+#details{
+    display:none;
+    padding: 60px 0;
+    background: #000;
+}
+
+#details.active{display:block}
+
+/* زر الرجوع */
+.back-btn{
+    background: #1d1d1f;
+    border: 1px solid rgba(255,255,255,0.1);
+    color: #0071e3;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-bottom: 30px;
+    padding: 12px 20px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+    background: #2d2d2f;
+    border-color: rgba(255,255,255,0.2);
+}
+
+.detail-image {
+    width: 100%;
+    max-width: 600px;
+    border-radius: 18px;
+    margin: 0 auto 30px;
+    display: block;
+}
+
+.detail-content h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #f5f5f7;
+    margin-bottom: 16px;
+    text-align: center;
+}
+
+.detail-content .price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #0071e3;
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.detail-content .description {
+    font-size: 1.125rem;
+    color: #a1a1a6;
+    line-height: 1.6;
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.other-horses h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #f5f5f7;
+    text-align: center;
+    margin: 60px 0 30px;
+}
+
+/* واتساب عائم */
+.whatsapp{
+    position: fixed;
+    left: 24px;
+    bottom: 24px;
+    z-index: 1000;
+    background: #25d366;
+    color: #fff;
+    font-size: 20px;
+    padding: 16px 20px;
+    border-radius: 50px;
+    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.whatsapp:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 30px rgba(37, 211, 102, 0.4);
+}
+
+.whatsapp span{
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+/* شريط تمرير لطيف */
+html{scroll-behavior:smooth}
+
+/* استجابة للشاشات الصغيرة */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+    
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero p {
+        font-size: 1.125rem;
+    }
+    
+    .grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .card .info {
+        padding: 20px;
+    }
+    
+    .whatsapp {
+        left: 16px;
+        bottom: 16px;
+        padding: 12px 16px;
+    }
+    
+    .whatsapp span {
+        display: none;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Navigation -->
+<nav>
+    <div class="nav-container">
+        <div class="logo">إسطبل مكة</div>
+        <div class="nav-links">
+            <a href="#home">الرئيسية</a>
+            <a href="#horses">الخيول</a>
+            <a href="#about">من نحن</a>
+            <a href="#contact">تواصل معنا</a>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero" id="home">
+    <h1>الخيول العربية الأصيلة</h1>
+    <p>اكتشف مجموعة استثنائية من أجود الخيول العربية الأصيلة</p>
+    <a href="#horses" class="cta-button">استكشف المجموعة</a>
+</section>
+
+<!-- WhatsApp Button -->
+<a class="whatsapp" href="https://wa.me/201007579619" target="_blank" aria-label="تواصل واتساب">
+  <i class="fab fa-whatsapp"></i><span>تواصل</span>
+</a>
+
+<div class="container">
+    <!-- قائمة الخيول -->
+    <section id="list" class="products-section">
+        <div class="section-header">
+            <h2>مجموعتنا المميزة</h2>
+            <p>خيول عربية أصيلة من أفضل السلالات</p>
+        </div>
+        <div class="grid" id="horseGrid"></div>
+    </section>
+
+    <!-- تفاصيل الحصان -->
+    <section id="details">
+        <button class="back-btn" onclick="showList()">← رجوع إلى المجموعة</button>
+        <div id="detailsContent" class="detail-content"></div>
+        <div class="other-horses">
+            <h2>خيول أخرى قد تعجبك</h2>
+            <div class="grid" id="otherGrid"></div>
+        </div>
+    </section>
+</div>
+
+<script>
+/* بيانات الخيول مع صور حقيقية */
+const horses = [
+  {
+    id:1,
+    name:"الحصان العربي الأصيل",
+    price:"150,000 ر.س",
+    short:"بطل سباقات التحمل، دماء نقية وسلوك هادئ",
+    img:"https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+    desc:`هذا الحصان ينتمي إلى سلالة نقية مسجلة في منظمة WAHO، يتمتّع ببنية قوية ورشاقة عالية، ملائم للمسابقات واستعراضات الجمال. تم تدريبه على أعلى المستويات ويتميز بطباع هادئة وذكاء استثنائي.`
+  },
+  {
+    id:2,
+    name:"فرس مهرية أصيلة",
+    price:"110,000 ر.س",
+    short:"فرس شابة بعمر ٣ سنوات، طاقة وحيوية استثنائية",
+    img:"https://images.unsplash.com/photo-1596492784531-6e6eb5ea9993?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+    desc:`تم تدريبها على الفروسية الكلاسيكية، حاصلة على شهادة خلوّ من الأمراض الوراثية، وتتميز بمزاج مطاوع يناسب المبتدئين والمحترفين على حد سواء. فرس رائعة للاستعراض والمسابقات.`
+  },
+  {
+    id:3,
+    name:"حصان قطري أصيل",
+    price:"180,000 ر.س",
+    short:"أنساب عريقة، جاهز للبطولات",
+    img:"https://images.unsplash.com/photo-1551884831-bbf3cdc6469e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+    desc:`حصل على المركز الأول في بطولة الرياض ٢٠٢٤ لفئة الخيل العربية، ويأتي مع جواز سفر بيطري كامل وسجل تطعيمات حديث. حصان استثنائي بأنساب عريقة وإنجازات مثبتة.`
+  },
+  {
+    id:4,
+    name:"مهرة عربية شقراء",
+    price:"95,000 ر.س",
+    short:"جمال أخاذ ونسب عريق",
+    img:"https://images.unsplash.com/photo-1449824913935-59a10b8d2000?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+    desc:`مهرة شابة بعمر سنتين، تتميز بلونها الشقراء الرائع وجمالها الأخاذ. من سلالة عريقة مع إمكانيات هائلة للمستقبل. مثالية للتدريب والتطوير.`
+  },
+  {
+    id:5,
+    name:"فحل عربي كحيل",
+    price:"220,000 ر.س",
+    short:"فحل بطل، وراثة ممتازة",
+    img:"https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+    desc:`فحل استثنائي من سلالة الكحيلان العريقة، بطل عدة مسابقات دولية ووالد لعشرات المهرات والمهور المتميزة. استثمار ممتاز لبرامج التربية والإنتاج.`
+  },
+  {
+    id:6,
+    name:"فرس صقلاوية",
+    price:"130,000 ر.س",
+    short:"نقاء السلالة وعراقة النسب",
+    img:"https://images.unsplash.com/photo-1534811714804-0ad4c1d51300?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+    desc:`فرس من السلالة الصقلاوية النادرة، معروفة بذكائها وسرعتها الفائقة. تتمتع بصحة ممتازة وقد حققت إنجازات رائعة في مسابقات القدرة والتحمل.`
+  }
+];
+
+/* رسم البطاقات في الصفحة الرئيسة */
+const grid = document.getElementById('horseGrid');
+const otherGrid = document.getElementById('otherGrid');
+const listSec = document.getElementById('list');
+const detailSec = document.getElementById('details');
+const detailContent = document.getElementById('detailsContent');
+
+function renderCards(targetGrid, data, excludeId=null){
+  targetGrid.innerHTML = '';
+  data
+    .filter(h=>h.id!==excludeId)
+    .forEach(h=>{
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.innerHTML = `
+        <div class="card-image">
+          <img src="${h.img}" alt="${h.name}" loading="lazy">
+        </div>
+        <div class="info">
+          <h3>${h.name}</h3>
+          <p class="price">${h.price}</p>
+          <p class="short">${h.short}</p>
+        </div>`;
+      card.onclick = ()=>showDetails(h.id);
+      targetGrid.appendChild(card);
+    });
+}
+
+function showDetails(id){
+  const h = horses.find(x=>x.id===id);
+  if(!h) return;
+  detailContent.innerHTML = `
+    <img src="${h.img}" alt="${h.name}" class="detail-image">
+    <h2>${h.name}</h2>
+    <p class="price">${h.price}</p>
+    <p class="description">${h.desc}</p>`;
+  renderCards(otherGrid, horses, id);
+  listSec.style.display='none';
+  detailSec.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function showList(){
+  detailSec.classList.remove('active');
+  listSec.style.display='block';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+/* بدء التشغيل */
+renderCards(grid, horses);
+
+// Smooth scrolling for navigation links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
+</script>
+
+</body>
+</html>
