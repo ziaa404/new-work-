@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>إسطبل القرشي  – منصة لبيع الخيول العربية الأصيلة</title>
+<title>إسطبل القرشي – منصة لبيع الخيول العربية الأصيلة</title>
 
 <!-- أيقونات (واتساب) -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -255,6 +255,76 @@ nav {
 
 #details.active{display:block}
 
+/* بطاقة تعريف الحصان */
+.horse-card {
+    background: #1d1d1f;
+    border-radius: 24px;
+    padding: 40px;
+    margin-bottom: 40px;
+    border: 1px solid rgba(255,255,255,0.1);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+}
+
+.horse-image-section {
+    text-align: center;
+}
+
+.detail-image {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 18px;
+    margin-bottom: 20px;
+}
+
+.horse-info-section h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #f5f5f7;
+    margin-bottom: 10px;
+}
+
+.horse-info-section .price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #0071e3;
+    margin-bottom: 30px;
+}
+
+.info-table {
+    display: grid;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.info-row {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 15px;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.info-label {
+    font-weight: 600;
+    color: #a1a1a6;
+    font-size: 0.95rem;
+}
+
+.info-value {
+    color: #f5f5f7;
+    font-size: 1rem;
+}
+
+.description {
+    color: #a1a1a6;
+    line-height: 1.6;
+    font-size: 1.1rem;
+}
+
 /* قسم التواصل */
 #contact{
     display:none;
@@ -349,39 +419,6 @@ nav {
     border-color: rgba(255,255,255,0.2);
 }
 
-.detail-image {
-    width: 100%;
-    max-width: 600px;
-    border-radius: 18px;
-    margin: 0 auto 30px;
-    display: block;
-}
-
-.detail-content h2 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: #f5f5f7;
-    margin-bottom: 16px;
-    text-align: center;
-}
-
-.detail-content .price {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #0071e3;
-    text-align: center;
-    margin-bottom: 24px;
-}
-
-.detail-content .description {
-    font-size: 1.125rem;
-    color: #a1a1a6;
-    line-height: 1.6;
-    text-align: center;
-    max-width: 700px;
-    margin: 0 auto;
-}
-
 .other-horses h2 {
     font-size: 2rem;
     font-weight: 700;
@@ -417,6 +454,34 @@ nav {
 .whatsapp span{
     font-size: 0.875rem;
     font-weight: 500;
+}
+
+/* التذييل */
+.footer {
+    text-align: center;
+    padding: 60px 20px 40px;
+    background: #000;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    margin-top: 80px;
+}
+
+.footer-logo {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #f5f5f7;
+    background: linear-gradient(135deg, #0071e3 0%, #00a8ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 20px rgba(0, 113, 227, 0.3);
+    letter-spacing: -0.02em;
+    margin-bottom: 10px;
+}
+
+.footer-location {
+    font-size: 1.2rem;
+    color: #a1a1a6;
+    font-weight: 400;
 }
 
 /* شريط تمرير لطيف */
@@ -461,6 +526,17 @@ html{scroll-behavior:smooth}
         padding: 20px;
     }
     
+    .horse-card {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 30px 20px;
+    }
+    
+    .info-row {
+        grid-template-columns: 120px 1fr;
+        gap: 10px;
+    }
+    
     .whatsapp {
         left: 16px;
         bottom: 16px;
@@ -478,6 +554,14 @@ html{scroll-behavior:smooth}
     
     .phone-number {
         font-size: 1.5rem;
+    }
+    
+    .footer-logo {
+        font-size: 2rem;
+    }
+    
+    .footer-location {
+        font-size: 1rem;
     }
 }
 
@@ -502,7 +586,7 @@ html{scroll-behavior:smooth}
 <!-- Navigation -->
 <nav>
     <div class="nav-container">
-        <div class="logo">إسطبل مكة</div>
+        <div class="logo">إسطبل القرشي</div>
         <div class="nav-center">
             <div class="search-container">
                 <i class="fas fa-search search-icon"></i>
@@ -574,8 +658,14 @@ html{scroll-behavior:smooth}
     </section>
 </div>
 
+<!-- التذييل -->
+<footer class="footer">
+    <div class="footer-logo">إسطبل القرشي</div>
+    <div class="footer-location">بمدينة الطائف</div>
+</footer>
+
 <script>
-/* بيانات الخيول مع صور حقيقية */
+/* بيانات الخيول مع بطاقات تعريف مفصلة */
 const horses = [
   {
     id:1,
@@ -583,7 +673,15 @@ const horses = [
     price:"150,000 ر.س",
     short:"بطل سباقات التحمل، دماء نقية وسلوك هادئ",
     img:"1.jpg.jpg",
-    desc:`هذا الحصان ينتمي إلى سلالة نقية مسجلة في منظمة WAHO، يتمتّع ببنية قوية ورشاقة عالية، ملائم للمسابقات واستعراضات الجمال. تم تدريبه على أعلى المستويات ويتميز بطباع هادئة وذكاء استثنائي.`
+    birthDate: "15 مارس 2020",
+    birthPlace: "مزارع الطائف الملكية",
+    lineage: "كحيلان أجوز × صقلاوية جدرانية",
+    father: "الأمير الكحيل",
+    mother: "نجلاء الصقلاوية",
+    color: "كستنائي غامق",
+    height: "155 سم",
+    weight: "450 كيلو",
+    desc:`هذا الحصان ينتمي إلى سلالة نقية مسجلة في منظمة WAHO، يتمتّع ببنية قوية ورشاقة عالية، ملائم للمسابقات واستعراضات الجمال. تم تدريبه على أعلى المستويات ويتميز بطباع هادئة وذكاء استثنائي. حاصل على شهادات صحية معتمدة وسجل تطعيمات كامل.`
   },
   {
     id:2,
@@ -591,7 +689,15 @@ const horses = [
     price:"110,000 ر.س",
     short:"فرس شابة بعمر ٣ سنوات، طاقة وحيوية استثنائية",
     img:"2.jpg.jpg",
-    desc:`تم تدريبها على الفروسية الكلاسيكية، حاصلة على شهادة خلوّ من الأمراض الوراثية، وتتميز بمزاج مطاوع يناسب المبتدئين والمحترفين على حد سواء. فرس رائعة للاستعراض والمسابقات.`
+    birthDate: "8 يونيو 2021",
+    birthPlace: "مزارع القرشي - الطائف",
+    lineage: "مهرية حرة × عباية حلباء",
+    father: "فارس المهرة",
+    mother: "زهرة العباية",
+    color: "أشقر ذهبي",
+    height: "152 سم",
+    weight: "420 كيلو",
+    desc:`تم تدريبها على الفروسية الكلاسيكية، حاصلة على شهادة خلوّ من الأمراض الوراثية، وتتميز بمزاج مطاوع يناسب المبتدئين والمحترفين على حد سواء. فرس رائعة للاستعراض والمسابقات، تتمتع بجمال طبيعي وأناقة في الحركة.`
   },
   {
     id:3,
@@ -599,7 +705,15 @@ const horses = [
     price:"180,000 ر.س",
     short:"أنساب عريقة، جاهز للبطولات",
     img:"3.jpg.jpg",
-    desc:`حصل على المركز الأول في بطولة الرياض ٢٠٢٤ لفئة الخيل العربية، ويأتي مع جواز سفر بيطري كامل وسجل تطعيمات حديث. حصان استثنائي بأنساب عريقة وإنجازات مثبتة.`
+    birthDate: "22 نوفمبر 2019",
+    birthPlace: "مزارع الخيل الملكية - قطر",
+    lineage: "شويمان سباح × دهمان شاهين",
+    father: "سلطان الشويمان",
+    mother: "ملكة الدهمان",
+    color: "أشهب مفتح",
+    height: "158 سم",
+    weight: "470 كيلو",
+    desc:`حصل على المركز الأول في بطولة الرياض ٢٠٢٤ لفئة الخيل العربية، ويأتي مع جواز سفر بيطري كامل وسجل تطعيمات حديث. حصان استثنائي بأنساب عريقة وإنجازات مثبتة في مسابقات الجمال والسرعة. يتميز بقوة التحمل والذكاء العالي.`
   },
   {
     id:4,
@@ -607,7 +721,15 @@ const horses = [
     price:"95,000 ر.س",
     short:"جمال أخاذ ونسب عريق",
     img:"4.jpg.jpg",
-    desc:`مهرة شابة بعمر سنتين، تتميز بلونها الشقراء الرائع وجمالها الأخاذ. من سلالة عريقة مع إمكانيات هائلة للمستقبل. مثالية للتدريب والتطوير.`
+    birthDate: "3 أبريل 2022",
+    birthPlace: "إسطبل القرشي - الطائف",
+    lineage: "كحيلان الكروش × صقلاوية العبيدة",
+    father: "نجم الكروش",
+    mother: "بدرية العبيدة",
+    color: "أشقر فاتح",
+    height: "148 سم",
+    weight: "380 كيلو",
+    desc:`مهرة شابة بعمر سنتين، تتميز بلونها الشقراء الرائع وجمالها الأخاذ. من سلالة عريقة مع إمكانيات هائلة للمستقبل. مثالية للتدريب والتطوير، تظهر علامات ذكاء وقابلية تعلم عالية. حاصلة على شهادات النسب المعتمدة.`
   },
   {
     id:5,
@@ -615,7 +737,15 @@ const horses = [
     price:"220,000 ر.س",
     short:"فحل بطل، وراثة ممتازة",
     img:"https://images.unsplash.com/photo-1645767006495-0136265e26c0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    desc:`فحل استثنائي من سلالة الكحيلان العريقة، بطل عدة مسابقات دولية ووالد لعشرات المهرات والمهور المتميزة. استثمار ممتاز لبرامج التربية والإنتاج.`
+    birthDate: "10 يناير 2018",
+    birthPlace: "مزارع الأحساء الملكية",
+    lineage: "كحيلان أجوز × كحيلان الجولان",
+    father: "الملك الكحيل",
+    mother: "أميرة الجولان",
+    color: "كستنائي محروق",
+    height: "160 سم",
+    weight: "480 كيلو",
+    desc:`فحل استثنائي من سلالة الكحيلان العريقة، بطل عدة مسابقات دولية ووالد لعشرات المهرات والمهور المتميزة. استثمار ممتاز لبرامج التربية والإنتاج. يتمتع بصحة ممتازة وقدرة إنتاجية عالية، مع سجل وراثي مميز.`
   },
   {
     id:6,
@@ -623,7 +753,15 @@ const horses = [
     price:"130,000 ر.س",
     short:"نقاء السلالة وعراقة النسب",
     img:"https://plus.unsplash.com/premium_photo-1733342531000-a99857bd088a?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    desc:`فرس من السلالة الصقلاوية النادرة، معروفة بذكائها وسرعتها الفائقة. تتمتع بصحة ممتازة وقد حققت إنجازات رائعة في مسابقات القدرة والتحمل.`
+    birthDate: "28 سبتمبر 2020",
+    birthPlace: "مزارع الصقلاوية - نجد",
+    lineage: "صقلاوية جدرانية × صقلاوية العبيدة",
+    father: "أمير الجدران",
+    mother: "لؤلؤة العبيدة",
+    color: "أشهب أزرق",
+    height: "154 سم",
+    weight: "440 كيلو",
+    desc:`فرس من السلالة الصقلاوية النادرة، معروفة بذكائها وسرعتها الفائقة. تتمتع بصحة ممتازة وقد حققت إنجازات رائعة في مسابقات القدرة والتحمل. تتميز برشاقة حركتها وجمال قوامها، مع طباع هادئة ومطاوعة.`
   }
 ];
 
@@ -676,11 +814,58 @@ function renderCards(targetGrid, data, excludeId=null){
 function showDetails(id){
   const h = horses.find(x=>x.id===id);
   if(!h) return;
+  
   detailContent.innerHTML = `
-    <img src="${h.img}" alt="${h.name}" class="detail-image">
-    <h2>${h.name}</h2>
-    <p class="price">${h.price}</p>
-    <p class="description">${h.desc}</p>`;
+    <div class="horse-card">
+      <div class="horse-image-section">
+        <img src="${h.img}" alt="${h.name}" class="detail-image">
+      </div>
+      <div class="horse-info-section">
+        <h2>${h.name}</h2>
+        <p class="price">${h.price}</p>
+        
+        <div class="info-table">
+          <div class="info-row">
+            <span class="info-label">تاريخ الميلاد:</span>
+            <span class="info-value">${h.birthDate}</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">مكان الميلاد:</span>
+            <span class="info-value">${h.birthPlace}</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">سلسلة القرابة:</span>
+            <span class="info-value">${h.lineage}</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">الأب:</span>
+            <span class="info-value">${h.father}</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">الأم:</span>
+            <span class="info-value">${h.mother}</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">اللون:</span>
+            <span class="info-value">${h.color}</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">الارتفاع:</span>
+            <span class="info-value">${h.height}</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">الوزن:</span>
+            <span class="info-value">${h.weight}</span>
+          </div>
+        </div>
+        
+        <div class="description">
+          <h3 style="color: #f5f5f7; margin-bottom: 15px; font-size: 1.3rem;">الوصف:</h3>
+          <p>${h.desc}</p>
+        </div>
+      </div>
+    </div>`;
+    
   renderCards(otherGrid, horses, id);
   hideAllSections();
   detailSec.classList.add('active');
@@ -721,7 +906,11 @@ function searchHorses(query) {
     filteredHorses = allHorses.filter(horse => 
       horse.name.includes(query) ||
       horse.short.includes(query) ||
-      horse.desc.includes(query)
+      horse.desc.includes(query) ||
+      horse.lineage.includes(query) ||
+      horse.father.includes(query) ||
+      horse.mother.includes(query) ||
+      horse.color.includes(query)
     );
   }
   renderCards(grid, filteredHorses);
